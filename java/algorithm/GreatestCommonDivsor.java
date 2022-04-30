@@ -1,4 +1,4 @@
-package Algorithms;
+package algorithm;
 
 public class GreatestCommonDivsor {
 

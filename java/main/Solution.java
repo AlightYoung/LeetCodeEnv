@@ -1,52 +1,25 @@
 package main;
 
-import java.util.*;
-import ICollections.*;
-import IUtils.CollectionBuilder;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import entity.User;
+
+@SuppressWarnings({ "unused" })
 public class Solution {
 
-    public static int[][] dirs = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
-    private int m, n;
-    private boolean[][] visited;
-
-    public int numEnclaves(int[][] grid) {
-        m = grid.length;
-        n = grid[0].length;
-        visited = new boolean[m][n];
-        for (int i = 0; i < m; i++) {
-            dfs(grid, i, 0);
-            dfs(grid, i, n - 1);
-        }
-        for (int j = 1; j < n - 1; j++) {
-            dfs(grid, 0, j);
-            dfs(grid, m - 1, j);
-        }
-        int enclaves = 0;
-        for (int i = 1; i < m - 1; i++) {
-            for (int j = 1; j < n - 1; j++) {
-                if (grid[i][j] == 1 && !visited[i][j]) {
-                    enclaves++;
-                }
-            }
-        }
-        return enclaves;
-    }
-
-    public void dfs(int[][] grid, int row, int col) {
-        if (row < 0 || row >= m || col < 0 || col >= n || grid[row][col] == 0 || visited[row][col]) {
-            return;
-        }
-        visited[row][col] = true;
-        for (int[] dir : dirs) {
-            dfs(grid, row + dir[0], col + dir[1]);
-        }
-    }
+    private static PrintStream out = System.out;
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        int[][] testcase = new int[][] { { 0, 0, 0, 0 }, { 1, 0, 1, 0 }, { 0, 1, 1, 0 }, { 0, 0, 0, 0 } };
-        solution.numEnclaves(testcase);
+        List<User> list = new ArrayList<User>();
+        for (int i = 0; i < 10; i++) {
+            list.add(new User("user" + i, i + 10));
+        }
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
     }
 
 }

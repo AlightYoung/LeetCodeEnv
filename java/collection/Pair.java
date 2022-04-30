@@ -1,4 +1,4 @@
-package ICollections;
+package collection;
 
 public class Pair<K, V> {
     public K key;
