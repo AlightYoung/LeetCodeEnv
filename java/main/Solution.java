@@ -1,25 +1,21 @@
 package main;
 
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import entity.User;
-
-@SuppressWarnings({ "unused" })
-public class Solution {
-
-    private static PrintStream out = System.out;
+class Solution {
 
     public static void main(String[] args) {
-        List<User> list = new ArrayList<User>();
-        for (int i = 0; i < 10; i++) {
-            list.add(new User("user" + i, i + 10));
-        }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
+        new Solution().minDeletionSize(new String[] { "rrjk","furt","guzm" });
     }
 
+    public int minDeletionSize(String[] strs) {
+        int ans = 0;
+        for (int i = 0; i < strs[0].length(); i++) {
+            for (int j = 1; j < strs.length; j++) {
+                if (strs[j].charAt(i) < strs[j - 1].charAt(i)) {
+                    ans += 1;
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
 }
